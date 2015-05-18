@@ -1,5 +1,8 @@
 Istock::Application.routes.draw do
 
+  resources :articles
+
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   root 'static_pages#index'
 
