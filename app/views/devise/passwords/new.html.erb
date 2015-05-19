@@ -1,16 +1,67 @@
-<h2>Forgot your password?</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<head>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+    <title>iStock Sample Project</title>    
 
-<%= render "devise/shared/links" %>
+</head>
+
+<body>
+
+    <div class="brand">iStock</div>
+
+    <div class="container">
+      <div class="row">
+        <div class="box min_h">
+          <div class="col-sm-2 col-md-3"></div>
+            <div class="col-xs-12 col-sm-8 col-md-6">
+
+				<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+				  <%= devise_error_messages! %>
+
+				  <h3 class="text-center">Login Here</h3>
+                <div class="form-group">
+				    <%= f.label :email %><br />
+				    <%= f.email_field :email, tabindex: "1", class: "form-control", placeholder: 'Enter your email', autofocus: true , required: true %>
+				  </div>
+
+				  <div class="actions">
+				    <%= f.submit "Send me reset password instructions", tabindex: "2", :class => 'btn btn-primary' %>
+				  </div>
+				<% end %>
+
+				<div class="row pad_top1">
+
+					<div class="col-sm-6">
+						<%- if controller_name != 'sessions' %>
+						  <%= link_to "Log in", new_session_path(resource_name), :class => 'btn btn-primary btn-block' %>
+						<% end -%>
+					</div>
+					<div class="col-sm-6">
+						<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+						  <%= link_to "Sign up", new_registration_path(resource_name), :class => 'btn btn-primary btn-block' %>
+						<% end -%>
+					</div>
+
+				</div>
+
+ 			    </div>
+            <div class="col-sm-2 col-md-3"></div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+   
+
+</body>
+
+</html>

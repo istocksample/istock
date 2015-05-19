@@ -191,6 +191,10 @@ footer p {
     }
 }
 
+.pad_top1 {
+    padding-top: 1em;
+}
+
 .min_h {
       min-height: 29em;
 }

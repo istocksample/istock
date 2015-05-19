@@ -1,6 +1,8 @@
 Istock::Application.routes.draw do
 
-  resources :articles
+  resources :articles do
+    resources :comments, :only => [:create]
+  end
 
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users

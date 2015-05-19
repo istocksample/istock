@@ -1,26 +1,76 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<head>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>iStock Sample Project</title>    
+
+</head>
+
+<body>
+
+    <div class="brand">iStock</div>
+
+    <div class="container">
+      <div class="row">
+        <div class="box min_h">
+          <div class="col-sm-2 col-md-3"></div>
+            <div class="col-xs-12 col-sm-8 col-md-6">
+               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <h3 class="text-center">Login Here</h3>
+                <div class="form-group">   
+                  <%= f.label :'email *' %>
+                  <%= f.email_field :email, type:"text", tabindex: "1", class: "form-control", placeholder: 'Enter your email', autofocus: true , required: true  %>
+                </div>
+
+                <div class="form-group">   
+                  <%= f.label :'password *' %>
+                  <%= f.password_field :password, type:"password", tabindex: "2", class: "form-control", placeholder: 'Enter your password', autocomplete: "off", required: true  %>
+                </div>
+
+                <% if devise_mapping.rememberable? -%>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end -%>
+
+                <div class="actions">
+                  <%= f.submit 'Log in', tabindex: "4", :class => 'btn btn-primary' %>
+                </div>
+              <% end %>
+              
+              <div class="row pad_top1">
+                  <div class="col-sm-6">
+                    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+                      <%= link_to "Become a new member", new_registration_path(resource_name), :class => 'btn btn-primary btn-block' %>
+                    <% end -%>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                      <%= link_to "Forgot your password?", new_password_path(resource_name), :class => 'btn btn-primary btn-block' %>
+                    <% end -%>
+                  </div>
+              </div>
+
+            </div>
+            <div class="col-sm-2 col-md-3"></div>
+        </div>
+      </div>
+
     </div>
-  <% end -%>
+    <!-- /.container -->
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+   
 
-<%= render "devise/shared/links" %>
+</body>
+
+</html>
