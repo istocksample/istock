@@ -4,7 +4,7 @@ Istock::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
-  root 'static_pages#index'
+  root 'articles#index'
 
   get "static_pages/index"
   get "static_pages/help"

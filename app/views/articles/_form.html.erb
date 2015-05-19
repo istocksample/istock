@@ -1,3 +1,4 @@
+
 <% if @article.errors.any? %>
   <ul>
     <%= @article.errors.full_messages.each do |message| %>
@@ -6,19 +7,24 @@
   </ul>
 <% end %>
 <%= form_for @article do |f| %>
-  <div>
-    <%= f.label :title %>
+  
+  <div class="form-group">   
+    <%= f.label :'title *' %>
+    <%= f.text_field :title, type:"text", tabindex: "1", class: "form-control", placeholder: 'Write the title', autofocus: true , required: true  %>
   </div>
-  <div>
-    <%= f.text_field :title %>
+  
+  <div class="form-group">
+    <%= f.label :'body*' %><br>
+    <%= f.cktext_area :body, type:"text", tabindex: "2", class: "form-control",  placeholder: 'Write the description '  %>
   </div>
-  <div>
-    <%= f.label :body %>
-  </div>
-  <div>
-    <%= f.cktext_area :body, rows: 10 %>
-  </div>
-  <div>
-    <%= f.submit %>
+
+  <div class="actions">
+    <% if current_page?(new_article_path) %>
+    <%= f.submit 'Create Article', tabindex: "3", :class => 'btn btn-primary' %>
+    <% else %>
+    <%= f.submit 'Update Article', tabindex: "3", :class => 'btn btn-primary' %>
+    <% end %>
+
+    <%= link_to "Cancel", articles_path, tabindex: "4", class: "btn btn-primary" %>
   </div>
 <% end %>
