@@ -195,6 +195,20 @@ footer p {
       min-height: 29em;
 }
 
+.entry-meta {
+    border-radius: 5px;
+    overflow: hidden;
+    background: #3C3431;
+    border-top: 1px solid #fff;
+    border-bottom: 5px solid #4e4e4e;
+    display: block;
+    font-size: 12px;
+    overflow: hidden;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+}
+
 .hr_blog {
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #fff;

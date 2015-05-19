@@ -40,9 +40,14 @@
                     </div>
                 </div>
                 <% @articles.each do |article| %>
-                <div class="col-lg-12 text-center">
+                <div class="col-xs-12 col-sm-2 text-center">
+                    <div class="entry-meta">
+                        <span><%= article.created_at.strftime("%Y %B %d, %H:%M:%S") %></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-10">
                     
-                    <h2><%= link_to  article.title.html_safe, article_path(article.id) %></h2>
+                    <h2 class="text-center"><%= link_to  article.title.html_safe, article_path(article.id) %></h2>
 
                                 <p><%= article.body.html_safe %></p>
 
@@ -61,6 +66,9 @@
 
                 <% end %>
                 
+                <div class="text-center">
+                    <%= will_paginate @articles %>
+                </div>
                 
             </div>
         </div>
