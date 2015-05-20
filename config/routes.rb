@@ -1,7 +1,10 @@
 Istock::Application.routes.draw do
 
   resources :articles do
-    resources :comments, :only => [:create]
+    resources :comments
+      collection do
+          put :destroy_comment
+        end
   end
 
   mount Ckeditor::Engine => '/ckeditor'

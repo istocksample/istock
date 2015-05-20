@@ -36,8 +36,27 @@
 
                     <h2>Comments</h2>
                      <div id="comments">
+
                              <%= render :partial => @article.comments %>
+                    <% @article.comments.each do |comment| %>
+                             <%= link_to "Delete comment", destroy_comment_articles_path(@comment), class: "btn btn-primary" %>
+
+                             
+                    <% end %>
+
+                    <%= form_for @comment do |f| %>
+                            <p>
+                                    <%= f.label :body, "New comment" %><br/>
+                                    <%= f.text_area :body, type:"text", tabindex: "6", class: "form-control",  placeholder: 'your comment', rows: "4", required: true  %>
+                            </p>
+                            <p><%= f.submit "Update comment" %></p>
+                        <% end %>
+
+
                      </div>
+                     
+
+                     
 
                      <%= form_for [@article, Comment.new] do |f| %>
                             <p>
