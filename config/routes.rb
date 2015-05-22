@@ -2,17 +2,19 @@ Istock::Application.routes.draw do
 
   resources :articles do
     resources :comments
-      collection do
-          put :destroy_comment
-        end
+      
   end
 
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   root 'articles#index'
 
-  get "static_pages/index"
-  get "static_pages/help"
+  #get "static_pages/index"
+  #get "static_pages/help"
+  
+  match '/author', to: 'static_pages#author', via: 'get'
+  match '/destroy_comment', to: 'comments#destroy_comment', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

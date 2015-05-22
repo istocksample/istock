@@ -5,6 +5,20 @@
                     Posted <%= time_ago_in_words(comment.created_at) %> ago
             </b>
             <br/>
-            <%= comment.body %>
+            <%= comment.body %><br/>
+            <% if user_signed_in? %>
+
+<div id="del">
+            <%= link_to 'Delete', article_comment_path(comment.article_id, comment.id), method: :Delete, :class => 'btn btn-sm btn-warning', tabindex: "3" %>
+           </div>
+
+            <% end %>                       
+                    
+
         </p>
+
+        
+
 <% end %>
+
+		
