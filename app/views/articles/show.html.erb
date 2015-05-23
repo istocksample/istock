@@ -35,6 +35,7 @@
                     <p><%= @article.body.html_safe %></p>
 
                     <h4>Comments</h4>
+                    
                      <div id="comments">
 
                             
@@ -43,7 +44,7 @@
 
                      </div>
                     
-                     <div id="message"></div>
+                     
                      <% if user_signed_in? %>
                          <%= form_for([@article, Comment.new], :remote => true) do |f| %>
                                 <p>
@@ -52,7 +53,11 @@
                                 </p>
                                 <p><%= f.submit "Add comment" %></p>
                         <% end %>
+
+
                     <% end %>
+
+                    
                     
                 </div>
 

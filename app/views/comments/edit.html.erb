@@ -1,0 +1,9 @@
+                       
+
+       <%= form_for(@comment , :url => article_comment_path) do |f| %>
+                <p>
+                        <%= f.label :body, "Update comment" %><br/>
+                        <%= f.text_area :body, type:"text", tabindex: "6", class: "form-control",  placeholder: 'your comment', rows: "4", required: true  %>
+                </p>
+                <p><%= f.submit "Update comment" %></p>
+        <% end %>

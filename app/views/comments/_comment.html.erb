@@ -1,5 +1,6 @@
 
 <%= div_for comment do %>
+        
         <p>
             <b>
                     Posted <%= time_ago_in_words(comment.created_at) %> ago
@@ -8,15 +9,17 @@
             <%= comment.body %><br/>
             <% if user_signed_in? %>
 
-<div id="del">
-            <%= link_to 'Delete', article_comment_path(comment.article_id, comment.id), method: :Delete, :class => 'btn btn-sm btn-warning', tabindex: "3" %>
-           </div>
+            <%= link_to 'Delete', article_comment_path(comment.article_id, comment.id), :remote => true, method: :Delete, :class => 'btn btn-sm btn-warning', tabindex: "1" %>
+
+            <!-- <div>
+            <%= link_to 'Edit', edit_article_comment_path(comment.article_id, comment.id), :class => 'btn btn-sm btn-warning', tabindex: "2" %>
+           </div> -->
 
             <% end %>                       
                     
 
         </p>
-
+    
         
 
 <% end %>

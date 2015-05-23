@@ -21,12 +21,26 @@ class CommentsController < ApplicationController
         @comment = Comment.find(params[:id])
     end
 
+    def update
+        @article = Article.find(params[:article_id])
+      @comment = Comment.find(params[:id])
+       @comment.body = params[:comment]["body"]
+        @comment.save
+        redirect_to @article
+      
+    end
+
+
     def destroy
         @comment = Comment.find(params[:id])
         @comment.destroy
-        @article = Article.find(params[:article_id])
-         redirect_to article_path(@article.id)
-         #format.js { render :layout=>false }
+        #@article = Article.find(params[:article_id])
+        
+        respond_to do |format|
+         #format.html { redirect_to article_path(@article.id)}
+         format.js 
+        end
+
       end
 
 
